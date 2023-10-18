@@ -1,0 +1,28 @@
+<%-include("./partials/header")%>
+    <h1>Movies Search</h1>
+
+    <form  action="/" method="post">
+      <label for="search"> Search Movie </label>
+      <input
+        type="text"
+        placeholder="search movies"
+        id="searchinput"
+        name="searchText"
+      />
+    </form>
+      <div class="row">
+        <% for(let movie of movies) { %>
+        <div class="col-lg-3">
+          <div class="card" style="width: 18rem">
+            <img src="<%= movie.image %>" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h3 class="card-title"><%= movie.name %></h3>
+    
+              <p class="card-text"><%= movie.year %></p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+    <%-include("./partials/footer")%>
