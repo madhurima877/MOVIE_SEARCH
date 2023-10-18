@@ -5,10 +5,10 @@ const mongoose = require("mongoose");
 const colors = require("colors");
 const Movie = require("./models/Movie");
 const axios = require("axios");
-const port=3000 
-
-mongoose
-  .connect("mongodb://127.0.0.1:27017/movies-recomm")
+require('dotenv').config();
+const port= process.env.PORT
+const dbURL=process.env.DBURL
+mongoose.connect(dbURL,{useNewUrlParser:true})
   .then(() => console.log("connection open!"))
   .catch((err) => console.log(err));
 
@@ -48,4 +48,4 @@ app.post("/",async (req, res) => {
 } );
 
 
-app.listen(port, () => console.log(`Server listening at http://localhost:3000`.red))
+app.listen(port, () => console.log(`Server listening at http://localhost:8080`.red))
